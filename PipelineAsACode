@@ -2,7 +2,7 @@ pipeline {
     agent any
     tools {
 	    maven "MAVEN3"
-	    jdk "OracleJDK8"
+	    jdk "OracleJDK11"
 	}
 
     stages{
@@ -27,10 +27,13 @@ pipeline {
             steps {
                 sh 'mvn test'
             }
-	stage('Checkstyle Analysis'){
+
+        }
+
+        stage('Checkstyle Analysis'){
             steps {
                 sh 'mvn checkstyle:checkstyle'
             }
-        }       
-    }     
+        }
+    }    
 }
